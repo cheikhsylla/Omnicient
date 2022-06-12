@@ -1,9 +1,12 @@
 <template>
-  <div></div>
+  <HelloWorld></HelloWorld>
 </template>
 
 <script>
-export default {};
+import HelloWorld from "./components/HelloWorld.vue";
+export default {
+  components: { HelloWorld },
+};
 </script>
 
 <style lang="scss" scoped></style>

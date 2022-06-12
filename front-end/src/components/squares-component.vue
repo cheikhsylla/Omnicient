@@ -10,7 +10,10 @@
           ></div>
           <div style="background: #2a9d8f" class="square"></div>
         </div>
-        <div class="gridd d-flex align-self-center">central grid</div>
+        <div class="d-flex justify-content-center">
+          <GridComponent></GridComponent>
+        </div>
+
         <div class="d-flex justify-content-between">
           <div style="background: #f4a261" class="square"></div>
           <div style="background: #e76f51" class="square"></div>
@@ -21,7 +24,12 @@
 </template>
 
 <script>
+import GridComponent from "./grid-component.vue";
 export default {
+  components: {
+    GridComponent,
+  },
+  name: "SquaresComponent",
   methods: {
     clickMethod(event) {
       console.log(event.target.style.background);

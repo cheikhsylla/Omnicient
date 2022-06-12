@@ -1,11 +1,12 @@
 <template>
-  <HelloWorld></HelloWorld>
+  <SquaresComponent></SquaresComponent>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import SquaresComponent from "./components/squares-component.vue";
+
 export default {
-  components: { HelloWorld },
+  components: { SquaresComponent },
 };
 </script>
 

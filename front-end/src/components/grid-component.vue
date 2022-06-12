@@ -1,21 +1,35 @@
 <template>
   <div class="d-flex flex-wrap justify-content-between">
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
+    <div
+      class="square"
+      v-for="square in numberOfGrid"
+      :key="square"
+      v-bind:style="{ background: selectedColors[square] }"
+      @click="RemoveColorFromArray($event)"
+    >
+      {{ square }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "GridComponent",
+  props: {
+    selectedColors: {
+      type: Array,
+    },
+  },
+  data() {
+    return {
+      numberOfGrid: 10,
+    };
+  },
+  methods: {
+    RemoveColorFromArray(event) {
+      this.$emit("RemoveColorFromArray", event.target.style.background);
+    },
+  },
 };
 </script>
 

@@ -8,15 +8,30 @@
             style="background: #264653"
             class="square"
           ></div>
-          <div style="background: #2a9d8f" class="square"></div>
+          <div
+            @click="clickMethod($event)"
+            style="background: #2a9d8f"
+            class="square"
+          ></div>
         </div>
         <div class="d-flex justify-content-center">
-          <GridComponent></GridComponent>
+          <GridComponent
+            :selectedColors="selectedColors"
+            @RemoveColorFromArray="RemoveColorFromArray"
+          ></GridComponent>
         </div>
 
         <div class="d-flex justify-content-between">
-          <div style="background: #f4a261" class="square"></div>
-          <div style="background: #e76f51" class="square"></div>
+          <div
+            @click="clickMethod($event)"
+            style="background: #f4a261"
+            class="square"
+          ></div>
+          <div
+            @click="clickMethod($event)"
+            style="background: #e76f51"
+            class="square"
+          ></div>
         </div>
       </div>
     </div>
@@ -30,9 +45,29 @@ export default {
     GridComponent,
   },
   name: "SquaresComponent",
+  data() {
+    return {
+      selectedColors: [],
+    };
+  },
   methods: {
     clickMethod(event) {
-      console.log(event.target.style.background);
+      this.selectedColors.push(event.target.style.background);
+
+      console.log("before:", this.selectedColors);
+    },
+    removeItem(array, item) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] == item) {
+          array.splice(array.indexOf(item), 1);
+          i--;
+        }
+      }
+    },
+
+    RemoveColorFromArray(el) {
+      this.removeItem(this.selectedColors, el);
+      console.log("rrrrrrr:", this.selectedColors);
     },
   },
 };
